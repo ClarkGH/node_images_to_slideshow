@@ -108,3 +108,12 @@ dist
 
 # All videos output locally
 *.mp4
+
+# DS_Store for dummies like me
+*.DS_Store
+
+# Images
+*.jpeg
+*.png
+*.jpg
+*.gif
