@@ -2,8 +2,6 @@
 ## What is this?
 Node backend service that converts a list of images to an mp4. Connected to "shotlify" in terms of showcasing my backend service chops. Purely for fun.
 
-Music does not yet work.
-
 ## Stack
 1. Node.js
 
