@@ -117,3 +117,6 @@ dist
 *.png
 *.jpg
 *.gif
+
+# Temporary folder's contents
+tmp/*
