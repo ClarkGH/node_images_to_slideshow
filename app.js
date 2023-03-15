@@ -1,26 +1,42 @@
+const ffprobePath = require('@ffprobe-installer/ffprobe').path;
+const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 const ffmpeg = require('fluent-ffmpeg');
-const path = require('path');
-const ffmpegPath = require('ffmpeg-static').path || ffmpeg.setFfmpegPath('./node_modules/ffmpeg-static/ffmpeg'); // Set the path to the ffmpeg binary
+const videoshow = require('videoshow');
+const fs = require('fs');
+const IMAGE_DIRECTORY = 'images/';
 
-function processSlideshow() {
-  return new Promise((resolve, reject) => {
-    const outputFilePath = path.join(__dirname, 'slideshow.mp4');
-    const IMAGE_INPUTS = './images/image%2d.jpeg';
+// Set path to the ffmpeg binaries or break functionality.
+ffmpeg.setFfmpegPath(ffmpegPath);
+ffmpeg.setFfprobePath(ffprobePath);
 
-    console.log('Here we a go.');
+const images = fs.readdirSync(IMAGE_DIRECTORY)
+  .filter(file => file.endsWith('.jpeg'))
+  .map(file => IMAGE_DIRECTORY + file);
 
-    ffmpeg()
-      .input(IMAGE_INPUTS)
-      .output(outputFilePath)
-      .videoCodec('libx264')
-      .outputFPS(1)
-      .frames(5)
-      .on('end', () => resolve(outputFilePath))
-      .on('error', (err) => reject(err))
-      .run();
+const videoOptions = {
+  fps: 25,
+  loop: 5, // seconds
+  transition: true,
+  transitionDuration: 1, // seconds
+  videoBitrate: 1024,
+  videoCodec: 'libx264',
+  size: '640x?',
+  audioBitrate: '128k',
+  audioChannels: 2,
+  format: 'mp4',
+  pixelFormat: 'yuv420p'
+};
+
+videoshow(images, videoOptions)
+  .audio('mixkit-tech-house-vibes-130.mp3')
+  .save('slideshow.mp4')
+  .on('start', (command) => {
+    console.log('ffMPEG slideshow process started:', command);
+  })
+  .on('error', (err, _, stderr) => {
+    console.error('Error:', err);
+    console.error('ffMPEG StdError:', stderr);
+  })
+  .on('end', (output) => {
+    console.error('Slideshow created in:', output);
   });
-}
-
-processSlideshow()
-  .then((outputFilePath) => console.log(`Slideshow processed successfully: ${outputFilePath}`))
-  .catch((err) => console.error(`Error processing slideshow: ${err}`));
