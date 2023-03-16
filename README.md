@@ -1,6 +1,6 @@
 # Images to Slideshow Converter
 ## What is this?
-API made in node.js that converts a list of images to an mp4.
+API made in node.js that converts a list of images to an mp4, and returns a video buffer.
 
 ## Stack
 This app is connected to "shotlify" via an Amazon s3 container, a lambda, and Redis.
