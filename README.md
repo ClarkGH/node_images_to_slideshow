@@ -1,13 +1,14 @@
 # Images to Slideshow Converter
 ## What is this?
-Node backend service that converts a list of images to an mp4. Connected to "shotlify" in terms of showcasing my backend service chops. Purely for fun.
+API made in node.js that converts a list of images to an mp4.
 
 ## Stack
-1. Node.js
+This app is connected to "shotlify" via an Amazon s3 container, a lambda, and Redis.
 
 ## Libs used
 1. [FluentFFmpeg](https://github.com/fluent-ffmpeg/node-fluent-ffmpeg)
 2. [VideoShow](https://github.com/h2non/videoshow)
+3. [ESlint](https://eslint.org/)
 
 ## Legalese
 
