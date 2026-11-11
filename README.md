@@ -5,6 +5,9 @@ API made in node.js that converts a list of images to an mp4, and returns a vide
 ## Stack
 This app is connected to "shotlify" via an Amazon s3 container, a lambda, and Redis.
 
+## How to use
+This is half-done, might never be completed. Download an mp3 or track of your choosing instead of the one hard-coded in. You'll have to do the piping to connect this to Shotlify if you don't want to use FFmpeg in your terminal.
+
 ## Libs used
 1. [FluentFFmpeg](https://github.com/fluent-ffmpeg/node-fluent-ffmpeg)
 2. [VideoShow](https://github.com/h2non/videoshow)
@@ -13,9 +16,11 @@ This app is connected to "shotlify" via an Amazon s3 container, a lambda, and Re
 ## Legalese
 
 ### Royalty Free Music:
+While the music is royalty free, it is not free for me to distribute. I cannot supply you with the mp3 as a download source. MixKit doesn't like that.
+
 Tech House vibes
 by Alejandro Magaña (A. M.)
-Snagged from [MixKit](https://mixkit.co/free-stock-music/)
+Snag it from [MixKit](https://mixkit.co/free-stock-music/)
 
 ### ffMPEG GPL Stuff
 ffMPEG falls under under the public GPL 2.0 license.
